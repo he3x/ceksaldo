@@ -30,18 +30,18 @@ async function cekSaldoPuppeteer() {
     console.log('🍪 Setting cookies...');
     await loader.setPuppeteerCookies(page);
     
-    // Navigate ke halaman utama
-    console.log('📄 Navigating to lapakgaming.com...');
-    await page.goto('https://www.lapakgaming.com', {
+    // Navigate langsung ke halaman reseller (tempat saldo berada)
+    console.log('📄 Navigating to lapakgaming.com/reseller/...');
+    await page.goto('https://www.lapakgaming.com/reseller/', {
       waitUntil: 'networkidle2',
       timeout: 30000
     });
     
     // Wait for page to load
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(3000);
     
     // Try to find saldo/balance information
-    console.log('💰 Mencari informasi saldo...\n');
+    console.log('💰 Mencari informasi saldo di halaman reseller...\n');
     
     // Method 1: Look for common balance selectors
     const possibleSelectors = [
@@ -199,8 +199,8 @@ async function cekSaldoAxios() {
       maxRedirects: 5
     });
     
-    console.log('🌐 Fetching lapakgaming.com...');
-    const response = await axios.get('https://www.lapakgaming.com', config);
+    console.log('🌐 Fetching lapakgaming.com/reseller/...');
+    const response = await axios.get('https://www.lapakgaming.com/reseller/', config);
     
     console.log(`✓ Status: ${response.status}`);
     
