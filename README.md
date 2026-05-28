@@ -33,6 +33,30 @@ npm install
 
 ## 🎯 Usage
 
+### Cek Saldo (Check Balance)
+
+Jalankan script untuk cek saldo di lapakgaming.com:
+
+```bash
+# Menggunakan Puppeteer (recommended - membuka browser)
+npm run cek-saldo
+
+# Atau langsung
+node cek-saldo.js
+
+# Menggunakan Axios (tanpa browser)
+npm run cek-saldo-axios
+```
+
+Script ini akan:
+- Load cookies dari file
+- Login otomatis menggunakan cookies
+- Mencari informasi saldo di halaman
+- Mengambil screenshot untuk referensi
+- Mencoba berbagai URL akun/profile jika saldo tidak ditemukan di halaman utama
+
+**Note:** Jika saldo tidak ditemukan otomatis, browser akan tetap terbuka selama 30 detik untuk inspeksi manual. Anda bisa melihat halaman dan mencari saldo secara manual.
+
 ### Basic Usage
 
 Jalankan program utama untuk melihat informasi cookies:

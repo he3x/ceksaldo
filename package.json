@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node example.js"
+    "test": "node example.js",
+    "cek-saldo": "node cek-saldo.js",
+    "cek-saldo-axios": "node cek-saldo.js axios"
   },
   "keywords": [
     "cookies",
@@ -17,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "puppeteer": "^22.0.0",
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12"
   }
 }
