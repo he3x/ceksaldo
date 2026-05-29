@@ -45,6 +45,11 @@ async function cekSaldoPuppeteer() {
     
     // Method 1: Look for common balance selectors
     const possibleSelectors = [
+      // Selector spesifik untuk saldo di halaman reseller
+      '#home-grid > div.row.card-container.p-0.title-card > div > div.greetings-container > span:nth-child(2) > b',
+      '.greetings-container span:nth-child(2) b',
+      '.greetings-container b',
+      // Generic selectors sebagai fallback
       '.balance',
       '.saldo',
       '#balance',
@@ -214,6 +219,11 @@ async function cekSaldoAxios() {
     
     // Method 1: Common selectors
     const selectors = [
+      // Selector spesifik untuk saldo di halaman reseller
+      '#home-grid > div.row.card-container.p-0.title-card > div > div.greetings-container > span:nth-child(2) > b',
+      '.greetings-container span:nth-child(2) b',
+      '.greetings-container b',
+      // Generic selectors sebagai fallback
       '.balance', '.saldo', '#balance', '#saldo',
       '[class*="balance"]', '[class*="saldo"]',
       '.wallet', '.credit', '.user-balance'
