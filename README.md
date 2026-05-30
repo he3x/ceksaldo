@@ -279,17 +279,86 @@ node bot-whatsapp-web.js
 
 ---
 
+## 🔐 Fitur Auto-Login & 2FA
+
+### Test 2FA Code Generator
+
+Untuk memverifikasi bahwa 2FA code generation bekerja dengan benar:
+
+```bash
+node test-2fa.js
+```
+
+**Output:**
+```
+╔══════════════════════════════════════════════════════════╗
+║           TEST 2FA CODE GENERATOR                        ║
+╚══════════════════════════════════════════════════════════╝
+
+🔢 Generating 2FA code...
+
+✅ SUCCESS!
+
+╔══════════════════════════════════════════════════════════╗
+║  Current 2FA Code: 040072                              ║
+╚══════════════════════════════════════════════════════════╝
+
+💡 Bandingkan dengan Google Authenticator untuk verifikasi
+```
+
+**Verifikasi:**
+1. Jalankan `node test-2fa.js`
+2. Buka Google Authenticator di HP
+3. Bandingkan kode yang muncul
+4. Jika **SAMA** = 2FA setup berhasil! ✅
+
+### Auto-Login Module
+
+Module untuk bypass reCAPTCHA dan 2FA secara otomatis:
+
+```bash
+# Lihat dokumentasi lengkap
+cat AUTO-LOGIN-README.md
+
+# Test auto-login
+node example-auto-login.js 1
+```
+
+**Fitur:**
+- ✅ Bypass reCAPTCHA v2 (SolveCaptcha API)
+- ✅ Generate 2FA code otomatis (TOTP)
+- ✅ Auto-refresh cookies saat expired
+- ✅ Modular & reusable
+
+**Konfigurasi:**
+Edit `auto-login.js` baris 21-28:
+```javascript
+const LOGIN_CONFIG = {
+  username: 'USERNAME_ANDA',
+  password: 'PASSWORD_ANDA',
+  totpSecret: 'SECRET_KEY_2FA', // Dari Google Authenticator
+  solveCaptchaApiKey: 'API_KEY_ANDA',
+  // ...
+};
+```
+
+---
+
 ## 📁 Struktur File
 
 ```
 cek-saldo/
-├── bot-whatsapp-web.js      # Bot utama (all-in-one)
-├── scrape-saldo-clean.js    # Scraping standalone
+├── bot-whatsapp-web.js      # Bot WhatsApp utama (all-in-one)
+├── scrape-saldo-clean.js    # Scraping saldo standalone
+├── auto-login.js            # Module auto-login + bypass 2FA
+├── test-2fa.js              # Test 2FA code generator
+├── example-auto-login.js    # Contoh penggunaan auto-login
 ├── convert-cookies.js       # Helper update cookie
 ├── cookis-lapak.txt         # Cookie storage
 ├── bot-config.json          # Konfigurasi grup (auto-generated)
 ├── package.json             # Dependencies
-├── README.md                # Dokumentasi
+├── README.md                # Dokumentasi utama
+├── AUTO-LOGIN-README.md     # Dokumentasi auto-login
 ├── .wwebjs_auth/            # WhatsApp session
 ├── .wwebjs_cache/           # WhatsApp cache
 └── node_modules/            # Dependencies

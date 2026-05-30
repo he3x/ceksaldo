@@ -10,6 +10,10 @@ node_modules/
 
 # User-specific config
 bot-config.json
+bot-unified-config.json
+
+# Environment variables (contains credentials)
+.env
 
 # Sensitive data - cookies
 cookis-lapak.txt
